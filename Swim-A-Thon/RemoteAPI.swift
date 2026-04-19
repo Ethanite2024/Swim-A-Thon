@@ -10,6 +10,7 @@ import SwiftData
 import SwiftUI
 
 struct RemoteAPI {
+    /// This Is a Placeholder API URL
     @AppStorage("remoteAPI") static var remoteAPI: URL = URL(string: "https://swimathon-api.placeholder.com/")!
     
     func getRemoteAPI() -> URL {
