@@ -8,9 +8,21 @@
 import Foundation
 import SwiftData
 import SwiftUI
-class RemoteAPI {
+
+struct RemoteAPI {
     @AppStorage("remoteAPI") static var remoteAPI: URL = URL(string: "https://swimathon-api.placeholder.com/")!
+    
     func getRemoteAPI() -> URL {
         return Self.remoteAPI
+    }
+    
+    // Make Swimmer Data into JSON
+    func convertSwimmerDataToJSON(swimmerName: String, swimmerId: UUID, swimmerLaps: Int) -> Data? {
+        let payload: [String: Any] = [
+            "name": swimmerName,
+            "id": swimmerId.uuidString,
+            "laps": swimmerLaps
+        ]
+        return try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
     }
 }
