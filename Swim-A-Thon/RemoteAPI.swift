@@ -24,6 +24,7 @@ struct RemoteAPI {
             "id": swimmerId.uuidString,
             "laps": swimmerLaps
         ]
+        // Example Return Output: {"name":"John Dart","id":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","laps":20}
         return try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
     }
 }
