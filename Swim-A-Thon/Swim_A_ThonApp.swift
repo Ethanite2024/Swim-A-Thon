@@ -25,8 +25,10 @@ struct Swim_A_ThonApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LapCounterView()
         }
         .modelContainer(sharedModelContainer)
     }
 }
+
+
