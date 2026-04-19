@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 final class Item {
+    
     var id: UUID
     var name: String
     var laps: Int
