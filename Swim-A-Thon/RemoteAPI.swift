@@ -10,8 +10,8 @@ import SwiftData
 import SwiftUI
 
 struct RemoteAPI {
-    /// This Is a Placeholder API URL
-    @AppStorage("remoteAPI") static var remoteAPI: URL = URL(string: "https://swimathon-api.placeholder.com/")!
+    /// The remote API I belive Is the Server name URL if it is then here is the server database name
+    @AppStorage("remoteAPI") static var remoteAPI: URL = URL(string: "tiger-sharks--database--swim-a-thon.database.windows.net")!
     
     func getRemoteAPI() -> URL {
         return Self.remoteAPI
