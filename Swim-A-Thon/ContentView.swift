@@ -33,6 +33,8 @@ struct LapCounterView: View {
     
     @AppStorage("reduceLag") private var reduceLag: Bool = true
 
+    @State private var showSettings: Bool = false
+
     private let metersPerLap = 25
 
     var body: some View {
@@ -130,6 +132,18 @@ struct LapCounterView: View {
                         .opacity(colorScheme == .dark ? 0.9 : 1.0)
                         .accessibilityHidden(true)
                 }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+                }
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsPlaceholderView(dismiss: { showSettings = false })
             }
         }
     }
@@ -1108,8 +1122,31 @@ private struct TutorialView: View {
     }
 }
 
+private struct SettingsPlaceholderView: View {
+    var dismiss: () -> Void
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                Image(systemName: "gearshape")
+                    .font(.system(size: 48))
+                    .foregroundStyle(.secondary)
+                Text("Settings Coming Soon")
+                    .font(.title2.bold())
+                Text("This is a placeholder for the Settings screen.")
+                    .foregroundStyle(.secondary)
+            }
+            .padding()
+            .navigationTitle("Settings")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") { dismiss() }
+                }
+            }
+        }
+    }
+}
+
 #Preview {
     LapCounterView()
         .modelContainer(for: Item.self, inMemory: true)
 }
-
