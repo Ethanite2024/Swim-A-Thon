@@ -31,7 +31,7 @@ struct LapCounterView: View {
     @AppStorage("hasSeenTutorial") private var hasSeenTutorial: Bool = false
     @State private var showTutorial: Bool = false
     
-    @AppStorage("reduceLag") private var reduceLag: Bool = false
+    @AppStorage("reduceLag") private var reduceLag: Bool = true
 
     @State private var showSettings: Bool = false
 
