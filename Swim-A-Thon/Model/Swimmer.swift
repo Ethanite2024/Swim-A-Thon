@@ -11,7 +11,7 @@ import SwiftData
 @Model
 //TODO: refactor this to rename the object to something that is descriptive (e.g. "Swimmer"). Hint, you can right client the class name, go to Refactor, and enter the new name - it will update across the code base.
 //TODO: make a 'model' folder and put your data-classes there.
-final class Item {
+final class Swimmer {
     
     var id: UUID
     var name: String
