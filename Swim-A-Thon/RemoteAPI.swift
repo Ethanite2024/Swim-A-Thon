@@ -40,3 +40,4 @@ struct RemoteAPI {
         return try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
     }
 }
+
