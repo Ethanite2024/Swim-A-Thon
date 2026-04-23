@@ -143,9 +143,22 @@ struct LapCounterView: View {
                 }
             }
             .sheet(isPresented: $showSettings) {
-                SettingsPlaceholderView(dismiss: { showSettings = false })
+                SettingsSheetView(dismiss: { showSettings = false })
             }
+            .navigationTitle("Lap Counter")
         }
+        }
+    }
+    func doTheThing() {
+            Task {
+                // Calls the async method without blocking the main thread
+                do {
+                    try await SwimApp.doTheThing()
+                } catch {
+                    print(error)
+                }
+            }
+            
     }
 
     // MARK: - Add swimmer UI
@@ -460,29 +473,7 @@ struct OnChangeCompat<Value: Equatable>: ViewModifier {
 }
 
 
-private struct SettingsPlaceholderView: View {
-    var dismiss: () -> Void
-    var body: some View {
-        NavigationStack {
-            VStack(spacing: 20) {
-                Image(systemName: "gearshape")
-                    .font(.system(size: 48))
-                    .foregroundStyle(.secondary)
-                Text("Settings Coming Soon")
-                    .font(.title2.bold())
-                Text("This is a placeholder for the Settings screen.")
-                    .foregroundStyle(.secondary)
-            }
-            .padding()
-            .navigationTitle("Settings")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") { dismiss() }
-                }
-            }
-        }
-    }
-}
+
 
 #Preview {
     LapCounterView()
