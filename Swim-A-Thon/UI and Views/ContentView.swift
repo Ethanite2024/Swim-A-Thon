@@ -38,6 +38,7 @@ struct LapCounterView: View {
     private let metersPerLap = 25
 
     var body: some View {
+        NavigationStack {
         GeometryReader { proxy in
             let metrics = LayoutMetrics(width: proxy.size.width)
 
@@ -479,3 +480,4 @@ struct OnChangeCompat<Value: Equatable>: ViewModifier {
     LapCounterView()
         .modelContainer(for: Swimmer.self, inMemory: true)
 }
+
