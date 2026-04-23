@@ -1,10 +1,9 @@
 //
 //  JSONObject.swift
-//  Swim-A-Thon
+//  APIExamples
 //
-//  Created by Ethan Sisbarro on 4/22/26.
+//  Created by Brame, Tony on 4/22/26.
 //
-
 import Foundation
 
 protocol JSONObject: Encodable {

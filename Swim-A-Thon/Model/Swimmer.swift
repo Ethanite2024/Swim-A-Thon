@@ -24,4 +24,17 @@ final class Swimmer {
         self.laps = laps
         self.createdAt = createdAt
     }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, laps, createdAt
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(laps, forKey: .laps)
+        try container.encode(createdAt, forKey: .createdAt)
+    }
+    
 }
