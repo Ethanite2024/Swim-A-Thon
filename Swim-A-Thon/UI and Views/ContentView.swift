@@ -11,7 +11,7 @@ import Combine
 
 struct LapCounterView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Swimmer.createdAt, order: .forward) private var items: [Swimmer]
+    @Query(sort: \Swimmer.createdAt, order: .forward) private var swimmers: [Swimmer]
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
@@ -47,14 +47,14 @@ struct LapCounterView: View {
                     VStack(spacing: metrics.vStackSpacing) {
                         addSwimmerBar(metrics: metrics)
 
-                        if items.isEmpty {
+                        if swimmers.isEmpty {
                             EmptyState(metrics: metrics)
                                 .padding(.horizontal, metrics.horizontalPadding)
                                 .padding(.top, 24)
                                 // NEW: gentle appear transition
                                 .transition(.opacity.combined(with: .scale))
                         } else {
-                            ForEach(items, id: \.id) { item in
+                            ForEach(swimmers, id: \.id) { item in
                                 SwimmerRow(
                                     item: item,
                                     metersPerLap: metersPerLap,
@@ -102,7 +102,7 @@ struct LapCounterView: View {
                         .padding(.bottom, 8)
                     }
                 }
-                .animation(reduceMotion ? .default : .spring(response: 0.45, dampingFraction: 0.9), value: items)
+                .animation(reduceMotion ? .default : .spring(response: 0.45, dampingFraction: 0.9), value: swimmers)
                 .animation(.snappy, value: showUndoBanner)
                 .onAppear {
                     if !hasSeenTutorial {
@@ -224,14 +224,14 @@ struct LapCounterView: View {
     private var canAddName: Bool {
         let name = newSwimmerName.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else { return false }
-        return !items.contains(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame })
+        return !swimmers.contains(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame })
     }
 
     private func validateName() {
         let name = newSwimmerName.trimmingCharacters(in: .whitespacesAndNewlines)
         if name.isEmpty {
             nameHelper = nil
-        } else if items.contains(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame }) {
+        } else if swimmers.contains(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame }) {
             nameHelper = "A swimmer with this name already exists."
         } else {
             nameHelper = nil
@@ -247,7 +247,7 @@ struct LapCounterView: View {
             isNameFieldFocused = false
             return
         }
-        guard !items.contains(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame }) else {
+        guard !swimmers.contains(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame }) else {
             nameHelper = "A swimmer with this name already exists."
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             return
