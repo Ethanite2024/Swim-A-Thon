@@ -6,6 +6,8 @@
 //
 
 
+import GSheetsSwift
+import GSheetsSwiftAPI
 import Foundation
 import SwiftData
 

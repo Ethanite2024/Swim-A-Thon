@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+import GSheetsSwift
+import GSheetsSwiftAPI
 class GoogleDocsLogicForAPI {
     let numberToLetters: [Int: (String, String)] = [
         1: ("A", "B"),

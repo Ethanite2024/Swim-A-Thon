@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftData
-
 @Model
 
 class Swimmer : JSONObject{

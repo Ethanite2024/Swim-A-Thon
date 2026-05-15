@@ -6,6 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AA3D1C1E2FB681E700614519 /* GSheetsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C1D2FB681E700614519 /* GSheetsSwift */; };
+		AA3D1C202FB681E700614519 /* GSheetsSwiftAPI in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C1F2FB681E700614519 /* GSheetsSwiftAPI */; };
+		AA3D1C232FB6841E00614519 /* GULAppDelegateSwizzler in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C222FB6841E00614519 /* GULAppDelegateSwizzler */; };
+		AA3D1C252FB6841E00614519 /* GULEnvironment in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C242FB6841E00614519 /* GULEnvironment */; };
+		AA3D1C272FB6841E00614519 /* GULLogger in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C262FB6841E00614519 /* GULLogger */; };
+		AA3D1C292FB6841E00614519 /* GULMethodSwizzler in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C282FB6841E00614519 /* GULMethodSwizzler */; };
+		AA3D1C2B2FB6841E00614519 /* GULNSData in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C2A2FB6841E00614519 /* GULNSData */; };
+		AA3D1C2E2FB6846E00614519 /* GTMAppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C2D2FB6846E00614519 /* GTMAppAuth */; };
+		AA3D1C312FB684C800614519 /* AppCheckCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C302FB684C800614519 /* AppCheckCore */; };
+		AA3D1C342FB6858600614519 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C332FB6858600614519 /* AppAuth */; };
+		AA3D1C362FB6858600614519 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C352FB6858600614519 /* AppAuthCore */; };
+		AA3D1C382FB6858600614519 /* AppAuthTV in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C372FB6858600614519 /* AppAuthTV */; };
+		AA3D1C3B2FB686B500614519 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C3A2FB686B500614519 /* GoogleSignIn */; };
+		AA3D1C3D2FB686B500614519 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA3D1C3C2FB686B500614519 /* GoogleSignInSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AA16F7392E0B065F0010D957 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +69,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3D1C342FB6858600614519 /* AppAuth in Frameworks */,
+				AA3D1C2B2FB6841E00614519 /* GULNSData in Frameworks */,
+				AA3D1C292FB6841E00614519 /* GULMethodSwizzler in Frameworks */,
+				AA3D1C3B2FB686B500614519 /* GoogleSignIn in Frameworks */,
+				AA3D1C1E2FB681E700614519 /* GSheetsSwift in Frameworks */,
+				AA3D1C232FB6841E00614519 /* GULAppDelegateSwizzler in Frameworks */,
+				AA3D1C272FB6841E00614519 /* GULLogger in Frameworks */,
+				AA3D1C382FB6858600614519 /* AppAuthTV in Frameworks */,
+				AA3D1C2E2FB6846E00614519 /* GTMAppAuth in Frameworks */,
+				AA3D1C3D2FB686B500614519 /* GoogleSignInSwift in Frameworks */,
+				AA3D1C362FB6858600614519 /* AppAuthCore in Frameworks */,
+				AA3D1C202FB681E700614519 /* GSheetsSwiftAPI in Frameworks */,
+				AA3D1C312FB684C800614519 /* AppCheckCore in Frameworks */,
+				AA3D1C252FB6841E00614519 /* GULEnvironment in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +143,20 @@
 			);
 			name = "Swim-A-Thon";
 			packageProductDependencies = (
+				AA3D1C1D2FB681E700614519 /* GSheetsSwift */,
+				AA3D1C1F2FB681E700614519 /* GSheetsSwiftAPI */,
+				AA3D1C222FB6841E00614519 /* GULAppDelegateSwizzler */,
+				AA3D1C242FB6841E00614519 /* GULEnvironment */,
+				AA3D1C262FB6841E00614519 /* GULLogger */,
+				AA3D1C282FB6841E00614519 /* GULMethodSwizzler */,
+				AA3D1C2A2FB6841E00614519 /* GULNSData */,
+				AA3D1C2D2FB6846E00614519 /* GTMAppAuth */,
+				AA3D1C302FB684C800614519 /* AppCheckCore */,
+				AA3D1C332FB6858600614519 /* AppAuth */,
+				AA3D1C352FB6858600614519 /* AppAuthCore */,
+				AA3D1C372FB6858600614519 /* AppAuthTV */,
+				AA3D1C3A2FB686B500614519 /* GoogleSignIn */,
+				AA3D1C3C2FB686B500614519 /* GoogleSignInSwift */,
 			);
 			productName = "Swim-A-Thon";
 			productReference = AA16F7262E0B065D0010D957 /* Swim-A-Thon.app */;
@@ -195,6 +240,14 @@
 			);
 			mainGroup = AA16F71D2E0B065D0010D957;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AA3D1C1C2FB681E700614519 /* XCRemoteSwiftPackageReference "GSheetsSwift" */,
+				AA3D1C212FB6841E00614519 /* XCRemoteSwiftPackageReference "GoogleUtilities" */,
+				AA3D1C2C2FB6846E00614519 /* XCRemoteSwiftPackageReference "GTMAppAuth" */,
+				AA3D1C2F2FB684C800614519 /* XCRemoteSwiftPackageReference "app-check" */,
+				AA3D1C322FB6858600614519 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				AA3D1C392FB686B500614519 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AA16F7272E0B065D0010D957 /* Products */;
 			projectDirPath = "";
@@ -560,6 +613,130 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA3D1C1C2FB681E700614519 /* XCRemoteSwiftPackageReference "GSheetsSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KaiTheRedNinja/GSheetsSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		AA3D1C212FB6841E00614519 /* XCRemoteSwiftPackageReference "GoogleUtilities" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleUtilities";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+		AA3D1C2C2FB6846E00614519 /* XCRemoteSwiftPackageReference "GTMAppAuth" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GTMAppAuth";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		AA3D1C2F2FB684C800614519 /* XCRemoteSwiftPackageReference "app-check" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/app-check";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.0;
+			};
+		};
+		AA3D1C322FB6858600614519 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		AA3D1C392FB686B500614519 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA3D1C1D2FB681E700614519 /* GSheetsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C1C2FB681E700614519 /* XCRemoteSwiftPackageReference "GSheetsSwift" */;
+			productName = GSheetsSwift;
+		};
+		AA3D1C1F2FB681E700614519 /* GSheetsSwiftAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C1C2FB681E700614519 /* XCRemoteSwiftPackageReference "GSheetsSwift" */;
+			productName = GSheetsSwiftAPI;
+		};
+		AA3D1C222FB6841E00614519 /* GULAppDelegateSwizzler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C212FB6841E00614519 /* XCRemoteSwiftPackageReference "GoogleUtilities" */;
+			productName = GULAppDelegateSwizzler;
+		};
+		AA3D1C242FB6841E00614519 /* GULEnvironment */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C212FB6841E00614519 /* XCRemoteSwiftPackageReference "GoogleUtilities" */;
+			productName = GULEnvironment;
+		};
+		AA3D1C262FB6841E00614519 /* GULLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C212FB6841E00614519 /* XCRemoteSwiftPackageReference "GoogleUtilities" */;
+			productName = GULLogger;
+		};
+		AA3D1C282FB6841E00614519 /* GULMethodSwizzler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C212FB6841E00614519 /* XCRemoteSwiftPackageReference "GoogleUtilities" */;
+			productName = GULMethodSwizzler;
+		};
+		AA3D1C2A2FB6841E00614519 /* GULNSData */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C212FB6841E00614519 /* XCRemoteSwiftPackageReference "GoogleUtilities" */;
+			productName = GULNSData;
+		};
+		AA3D1C2D2FB6846E00614519 /* GTMAppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C2C2FB6846E00614519 /* XCRemoteSwiftPackageReference "GTMAppAuth" */;
+			productName = GTMAppAuth;
+		};
+		AA3D1C302FB684C800614519 /* AppCheckCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C2F2FB684C800614519 /* XCRemoteSwiftPackageReference "app-check" */;
+			productName = AppCheckCore;
+		};
+		AA3D1C332FB6858600614519 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C322FB6858600614519 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		AA3D1C352FB6858600614519 /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C322FB6858600614519 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
+		};
+		AA3D1C372FB6858600614519 /* AppAuthTV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C322FB6858600614519 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthTV;
+		};
+		AA3D1C3A2FB686B500614519 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C392FB686B500614519 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		AA3D1C3C2FB686B500614519 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3D1C392FB686B500614519 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA16F71E2E0B065D0010D957 /* Project object */;
 }

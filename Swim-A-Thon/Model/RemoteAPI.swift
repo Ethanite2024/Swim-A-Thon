@@ -8,6 +8,8 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import GSheetsSwift
+import GSheetsSwiftAPI
 
 struct RemoteAPI {
     /// This Is a Placeholder API URL

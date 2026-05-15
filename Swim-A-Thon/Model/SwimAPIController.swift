@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+import GSheetsSwift
+import GSheetsSwiftAPI
 class SwimAPIController {
     
     static func sendSwimmer(data: Swimmer) async throws {
