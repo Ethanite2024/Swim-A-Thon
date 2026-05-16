@@ -12,16 +12,22 @@ import GSheetsSwiftAPI
 import GSheetsSwiftTypes
 import GoogleSignIn
 import GoogleSignInSwift
+import SwiftData
 
 struct SendToSheets: View {
     @Environment(\.isSignedIn) private var isSignedIn: Binding<Bool>
     @Environment(\.dismiss) private var dismiss
+    
+    @Query(sort: \Swimmer.createdAt, order: .forward) private var swimmers: [Swimmer]
     
     @StateObject private var sheets = SheetsInterface()
     
     @State private var sheetURL: String = "https://docs.google.com/spreadsheets/d/1b5MSzYg6pZg1S8oGwya08jH5eCX8NhvunPMIIBdCDGw/edit?usp=sharing"
     @State private var statusMessage: String = ""
     @State private var isLoading: Bool = false
+    
+    @State private var swimmerNamesArray: [String] = []
+    @State private var swimmerLapsArray: [Int] = []
 
     var body: some View {
         VStack(spacing: 16) {
@@ -50,7 +56,11 @@ struct SendToSheets: View {
                         if sheets.targetSheet == nil {
                             await loadSheet()
                         }
-                        insertSwimmerData(name: "Sample Swimmer", laps: 25)
+                        for swimmer in swimmers {
+                            addSwimmerNameArray(swimmer.name, to: &swimmerNamesArray)
+                            addSwimmerLapsArray(swimmer.laps, to: &swimmerLapsArray)
+                        }
+                        insertSwimmerArrayData(stringValues: swimmerNamesArray, numberValues: swimmerLapsArray)
                     }
                 }
                 .buttonStyle(.bordered)
@@ -101,18 +111,28 @@ struct SendToSheets: View {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             GIDSignIn.sharedInstance.signIn(withPresenting: topVC, hint: nil, additionalScopes: scopes) { signInResult, error in
-                guard let result = signInResult else {
-                    statusMessage = "Sign-in failed: \(error?.localizedDescription ?? "Unknown error")"
-                    isSignedIn.wrappedValue = false
-                    return
-                }
+                DispatchQueue.main.async {
+                    guard let result = signInResult else {
+                        statusMessage = "Sign-in failed: \(error?.localizedDescription ?? "Unknown error")"
+                        isSignedIn.wrappedValue = false
+                        return
+                    }
 
-                isSignedIn.wrappedValue = true
-                SheetsInterface.accessToken = result.user.accessToken.tokenString
-                APISecretManager.accessToken = result.user.accessToken.tokenString
-                statusMessage = "Signed in successfully."
+                    isSignedIn.wrappedValue = true
+                    SheetsInterface.accessToken = result.user.accessToken.tokenString
+                    APISecretManager.accessToken = result.user.accessToken.tokenString
+                    statusMessage = "Signed in successfully."
+                }
             }
         }
+    }
+    
+    func addSwimmerNameArray(_ value: String, to array: inout [String]) {
+        array.append(value)
+    }
+
+    func addSwimmerLapsArray(_ value: Int, to array: inout [Int]) {
+        array.append(value)
     }
 
     private func loadSheet() async {
@@ -138,7 +158,41 @@ struct SendToSheets: View {
             statusMessage = "Load failed: \(error.localizedDescription)"
         }
     }
+    
+    func insertSwimmerArrayData(stringValues:[String],numberValues:[Int]) {
+        guard let targetSheet = sheets.targetSheet else { return }
 
+
+        let rows: [RowData] = zip(stringValues, numberValues).map { string, number in
+            RowData(values: [
+                CellData(userEnteredValue: ExtendedValue(stringValue: string)),
+                CellData(userEnteredValue: ExtendedValue(numberValue: Double(number)))
+            ])
+        }
+
+        let updateCells = UpdateCellsRequest(
+            rows: rows,
+            fields: "*",
+            start: GridCoordinate(
+                sheetId: targetSheet.properties.sheetId,
+                rowIndex: 0,
+                columnIndex: 0
+            )
+        )
+
+        statusMessage = "Inserting data…"
+        sheets.update(requests: [UpdateRequest(updateCells: updateCells)]) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    statusMessage = "Inserted \(rows.count) rows into A1:B\(rows.count)."
+                case .failure(let error):
+                    statusMessage = "Insert failed: \(error.localizedDescription)"
+                }
+            }
+        }
+    }
+    
     func insertSwimmerData(name: String, laps: Int) {
         guard let targetSheet = sheets.targetSheet else {
             statusMessage = "Sheet not ready."

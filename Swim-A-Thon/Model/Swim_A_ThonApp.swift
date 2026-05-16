@@ -7,11 +7,13 @@
 
 import SwiftUI
 import SwiftData
+import GoogleSignIn
 
 @main
 struct Swim_A_ThonApp: App {
     /// Google is Signed in
     @State private var isSignedIn: Bool = false
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Swimmer.self,
@@ -28,9 +30,11 @@ struct Swim_A_ThonApp: App {
     var body: some Scene {
         WindowGroup {
             LapCounterView()
+                .environment(\.isSignedIn, $isSignedIn)
+                .onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
+                }
         }
         .modelContainer(sharedModelContainer)
     }
 }
-
-

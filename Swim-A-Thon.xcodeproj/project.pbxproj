@@ -46,9 +46,22 @@
 		AA16F7422E0B065F0010D957 /* Swim-A-ThonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swim-A-ThonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AACE12EF2FB8DE23004C52F7 /* Exceptions for "Swim-A-Thon" folder in "Swim-A-Thon" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AA16F7252E0B065D0010D957 /* Swim-A-Thon */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AA16F7282E0B065D0010D957 /* Swim-A-Thon */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AACE12EF2FB8DE23004C52F7 /* Exceptions for "Swim-A-Thon" folder in "Swim-A-Thon" target */,
+			);
 			path = "Swim-A-Thon";
 			sourceTree = "<group>";
 		};
@@ -454,6 +467,7 @@
 				DEVELOPMENT_TEAM = ANGRFJV259;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Swim-A-Thon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -483,6 +497,7 @@
 				DEVELOPMENT_TEAM = ANGRFJV259;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Swim-A-Thon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
