@@ -11,16 +11,13 @@ import Combine
 
 struct SettingsSheetView: View {
     var dismiss: () -> Void
-    var presentSendToSheets: () -> Void
     @Query(sort: \Swimmer.createdAt, order: .forward) private var swimmers: [Swimmer]
     @State private var showResetAlert = false
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
-                let rawWidth = proxy.size.width
-                let width = rawWidth > 0 ? rawWidth : 375.0  // Guard against zero/negative on first layout pass
+                let width = proxy.size.width
                 let isRegular = (horizontalSizeClass == .regular) || width >= 700
                 let scale = min(max(width / 375.0, 0.9), 1.6)
                 let baseHeight: CGFloat = isRegular ? 56 : 48
@@ -34,9 +31,9 @@ struct SettingsSheetView: View {
 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: spacing) {
+                        // Button to submit data
                         Button {
-                            dismiss()
-                            presentSendToSheets()
+                            // the code to submit to database
                         } label: {
                             Text("Submit Swimmer Lap Counts")
                                 .font(.system(size: fontSize, weight: .semibold))
@@ -48,26 +45,14 @@ struct SettingsSheetView: View {
                         )
                         .foregroundColor(.white)
 
+                        // Reset ALL Swimmers
                         Button {
+                            // Reset laps for all swimmers
                             for swimmer in swimmers {
                                 swimmer.laps = 0
                             }
                         } label: {
                             Text("Reset All Swimmers")
-                                .font(.system(size: fontSize, weight: .semibold))
-                                .frame(maxWidth: .infinity, minHeight: buttonHeight)
-                        }
-                        .background(
-                            RoundedRectangle(cornerRadius: cornerRadius)
-                                .fill(Color.blue)
-                        )
-                        .foregroundColor(.white)
-
-                        Button {
-                            dismiss()
-                            presentSendToSheets()
-                        } label: {
-                            Text("Send Swimmer Data Method: Google")
                                 .font(.system(size: fontSize, weight: .semibold))
                                 .frame(maxWidth: .infinity, minHeight: buttonHeight)
                         }
@@ -94,5 +79,5 @@ struct SettingsSheetView: View {
 }
 
 #Preview {
-    SettingsSheetView(dismiss: {}, presentSendToSheets: {})
+    SettingsSheetView(dismiss: {})
 }
