@@ -10,8 +10,6 @@ import SwiftData
 
 @main
 struct Swim_A_ThonApp: App {
-    /// Google is Signed in
-    @State private var isSignedIn: Bool = false
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Swimmer.self,
