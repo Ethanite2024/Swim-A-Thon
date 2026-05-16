@@ -10,6 +10,7 @@ import SwiftData
 import Combine
 
 struct LapCounterView: View {
+    @Environment(\.isSignedIn) private var isSignedIn: Binding<Bool>
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Swimmer.createdAt, order: .forward) private var swimmers: [Swimmer]
 
@@ -34,6 +35,7 @@ struct LapCounterView: View {
     @AppStorage("reduceLag") private var reduceLag: Bool = false
 
     @State private var showSettings: Bool = false
+    @State private var showSendToSheets: Bool = false
 
     private let metersPerLap = 25
 
@@ -144,7 +146,15 @@ struct LapCounterView: View {
                 }
             }
             .sheet(isPresented: $showSettings) {
-                SettingsSheetView(dismiss: { showSettings = false })
+                SettingsSheetView(dismiss: { showSettings = false }, presentSendToSheets: {
+                    showSettings = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        showSendToSheets = true
+                    }
+                })
+            }
+            .sheet(isPresented: $showSendToSheets) {
+                SendToSheets()
             }
             .navigationTitle("Lap Counter")
         }
