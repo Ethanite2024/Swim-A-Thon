@@ -53,6 +53,8 @@ struct SendToSheets: View {
             
                 Button("Send Data") {
                     Task {
+                        swimmerNamesArray = []
+                        swimmerLapsArray = []
                         if sheets.targetSheet == nil {
                             await loadSheet()
                         }
