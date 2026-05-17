@@ -12,6 +12,7 @@ import Combine
 struct SettingsSheetView: View {
     var dismiss: () -> Void
     var presentSendToSheets: () -> Void
+    @AppStorage("selectedLane") var selectedLane: Int = 0
     @Query(sort: \Swimmer.createdAt, order: .forward) private var swimmers: [Swimmer]
     @State private var showResetAlert = false
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -34,6 +35,7 @@ struct SettingsSheetView: View {
 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: spacing) {
+                        LaneSelecter().padding()
                         Button {
                             dismiss()
                             presentSendToSheets()
@@ -75,7 +77,7 @@ struct SettingsSheetView: View {
                             RoundedRectangle(cornerRadius: cornerRadius)
                                 .fill(Color.blue)
                         )
-                        .foregroundColor(.white)
+                        .foregroundColor(.white).disabled(selectedLane < 1 || selectedLane > 13)
                     }
                     .frame(maxWidth: maxContentWidth)
                     .padding(contentPadding)

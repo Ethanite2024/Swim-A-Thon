@@ -16,7 +16,7 @@ struct Swim_A_ThonApp: App {
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Swimmer.self,
+            Swimmer.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

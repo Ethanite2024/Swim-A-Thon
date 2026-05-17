@@ -19,13 +19,12 @@ struct SendToSheets: View {
     @Environment(\.dismiss) private var dismiss
     
     @Query(sort: \Swimmer.createdAt, order: .forward) private var swimmers: [Swimmer]
-    
+    @AppStorage("selectedLane") var selectedLane: Int = 0
     @StateObject private var sheets = SheetsInterface()
     
     @State private var sheetURL: String = "https://docs.google.com/spreadsheets/d/1b5MSzYg6pZg1S8oGwya08jH5eCX8NhvunPMIIBdCDGw/edit?usp=sharing"
     @State private var statusMessage: String = ""
     @State private var isLoading: Bool = false
-    
     @State private var swimmerNamesArray: [String] = []
     @State private var swimmerLapsArray: [Int] = []
 
@@ -44,14 +43,15 @@ struct SendToSheets: View {
 
             } else {
                 HStack {
-                    Button("Load") {
-                        Task { await loadSheet() }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(sheetURL.isEmpty || isLoading)
+                    //Button("Load") {
+                        //Task { await loadSheet() }
+                    //}
+                    //.buttonStyle(.borderedProminent)
+                    //.disabled(sheetURL.isEmpty || isLoading)
                 }
             
                 Button("Send Data") {
+                    
                     Task {
                         swimmerNamesArray = []
                         swimmerLapsArray = []
@@ -63,7 +63,9 @@ struct SendToSheets: View {
                             addSwimmerLapsArray(swimmer.laps, to: &swimmerLapsArray)
                         }
                         insertSwimmerArrayData(stringValues: swimmerNamesArray, numberValues: swimmerLapsArray)
+                        selectedLane = 0
                     }
+                    
                 }
                 .buttonStyle(.bordered)
                 
@@ -178,7 +180,7 @@ struct SendToSheets: View {
             start: GridCoordinate(
                 sheetId: targetSheet.properties.sheetId,
                 rowIndex: 0,
-                columnIndex: 0
+                columnIndex: getLaneColumn(laneNumber: LaneSelecter().selectedLane)
             )
         )
 
@@ -217,7 +219,7 @@ struct SendToSheets: View {
             start: GridCoordinate(
                 sheetId: targetSheet.properties.sheetId,
                 rowIndex: 0,
-                columnIndex: 0
+                columnIndex: getLaneColumn(laneNumber: LaneSelecter().selectedLane)
             )
         )
 
@@ -232,6 +234,12 @@ struct SendToSheets: View {
                 }
             }
         }
+    }
+    
+    func getLaneColumn(laneNumber:Int) -> Int {
+        let columnNumbers: [Int: Int] = [1: 0, 2: 2, 3: 4, 4: 6, 5: 8, 6: 10, 7: 12, 8: 14, 9: 16, 10: 18, 11: 20, 12: 22, 13: 24]
+        return columnNumbers[laneNumber] ?? 404  // returns 0 if key not found
+        
     }
 
     private func extractSheetID(from urlString: String) -> String? {
